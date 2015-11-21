@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import input_data
-import Jaffee_Parser
+import jaffe_parser
 
 
 def init_weights(shape):
@@ -31,16 +31,21 @@ def model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden):
     pyx = tf.matmul(l4, w_o)
     return pyx
 
+parser = jaffe_parser.Jaffee_Parser()
 
-X_data = Jaffee_Parser.images_to_tensor()
-Y_data = Jaffee_Parser.text_to_tensor()
+X_data = parser.images_to_tensor()
+Y_data = parser.text_to_one_hot()
+split_index = int(len(X_data)*.8)
 
-trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
-trX = trX.reshape(-1, 28, 28, 1)
-teX = teX.reshape(-1, 28, 28, 1)
+X_tr = X_data[:split_index]
+X_te = X_data[split_index:]
 
-X = tf.placeholder("float", [None, 28, 28, 1])
-Y = tf.placeholder("float", [None, 10])
+Y_tr = Y_data[:split_index]
+Y_te = Y_data[split_index:]
+
+
+X = tf.placeholder("float", [None, 256, 256, 1])
+Y = tf.placeholder("float", [None, 7])
 
 w = init_weights([3, 3, 1, 32])
 w2 = init_weights([3, 3, 32, 64])
