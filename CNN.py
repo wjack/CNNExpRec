@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-import input_data
 import jaffe_parser
 
 
@@ -44,14 +43,14 @@ Y_tr = Y_data[:split_index]
 Y_te = Y_data[split_index:]
 
 
-X = tf.placeholder("float", [None, 256, 256, 1])
+X = tf.placeholder("float", [None, 64, 64, 1])
 Y = tf.placeholder("float", [None, 7])
 
-w = init_weights([3, 3, 1, 32])
-w2 = init_weights([3, 3, 32, 64])
-w3 = init_weights([3, 3, 64, 128])
-w4 = init_weights([128 * 4 * 4, 625])
-w_o = init_weights([625, 10])
+w = init_weights([4, 4, 1, 64])
+w2 = init_weights([4, 4, 64,128])
+w3 = init_weights([4, 4, 128, 256])
+w4 = init_weights([256*4*4*4, 1250])
+w_o = init_weights([1250, 7])
 
 p_keep_conv = tf.placeholder("float")
 p_keep_hidden = tf.placeholder("float")
@@ -59,23 +58,26 @@ py_x = model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden)
 
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))
 train_op = tf.train.RMSPropOptimizer(0.001, 0.9).minimize(cost)
-predict_op = tf.argmax(py_x, 1)
+predict_op = tf.argmax(py_x,1)
 
 sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
+
+print 'Training model...'
 for i in range(100):
-    for start, end in zip(range(0, len(trX), 128), range(128, len(trX), 128)):
-        sess.run(train_op, feed_dict={X: trX[start:end], Y: trY[start:end],
-                                      p_keep_conv: 0.8, p_keep_hidden: 0.5})
-
-    test_indices = np.arange(len(teX)) # Get A Test Batch
-    np.random.shuffle(test_indices)
-    test_indices = test_indices[0:256]
-
-    print i, np.mean(np.argmax(teY[test_indices], axis=1) ==
-                     sess.run(predict_op, feed_dict={X: teX[test_indices],
-                                                     Y: teY[test_indices],
+    print str(i)
+    sess.run(train_op, feed_dict={X:X_tr, Y:Y_tr,
+                                  p_keep_conv: 0.8, p_keep_hidden: 0.5})
+    print 'Trained iteration'
+    print sess.run(predict_op, feed_dict={X: X_te,
+                                    Y: Y_te,
+                                    p_keep_conv: 1.0,
+                                    p_keep_hidden: 1.0})
+    print np.argmax(Y_te, axis=1)
+    print i, np.mean(np.argmax(Y_te, axis=1) ==
+                     sess.run(predict_op, feed_dict={X: X_te,
+                                                     Y: Y_te,
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))

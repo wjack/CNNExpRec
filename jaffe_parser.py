@@ -11,7 +11,7 @@ class Jaffee_Parser:
         for file in sorted(os.listdir('data/jaffe_images_small')) :
 
             if(file != '.DS_Store'):
-                
+
                 image = mpimg.imread('data/jaffe_images_small/' + file)
                 if (len(np.shape(image)) > 2):
                     image = image[:,:,0]
@@ -62,7 +62,7 @@ class Jaffee_Parser:
 
         i  = np.argsort(label_tensor[:,0])
 
-        print label_tensor[i]
+
         label_tensor = label_tensor[i][:,1]
 
         label_tensor = label_tensor.astype(int)
