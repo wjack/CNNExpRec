@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import input_data
+import Jaffee_Parser
 
 
 def init_weights(shape):
@@ -30,7 +31,10 @@ def model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden):
     pyx = tf.matmul(l4, w_o)
     return pyx
 
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+X_data = Jaffee_Parser.images_to_tensor()
+Y_data = Jaffee_Parser.text_to_tensor()
+
 trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
 trX = trX.reshape(-1, 28, 28, 1)
 teX = teX.reshape(-1, 28, 28, 1)
