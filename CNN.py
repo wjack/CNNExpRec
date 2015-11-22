@@ -34,6 +34,11 @@ parser = jaffe_parser.Jaffee_Parser()
 
 X_data = parser.images_to_tensor()
 Y_data = parser.text_to_one_hot()
+print np.size(X_data[:,0,0])
+print np.size(Y_data)
+
+
+
 split_index = int(len(X_data)*.8)
 
 X_tr = X_data[:split_index]
@@ -42,13 +47,15 @@ X_te = X_data[split_index:]
 Y_tr = Y_data[:split_index]
 Y_te = Y_data[split_index:]
 
+print np.size(X_te[:,0,0])
+print np.size(Y_te)
 
 X = tf.placeholder("float", [None, 64, 64, 1])
 Y = tf.placeholder("float", [None, 7])
 
-w = init_weights([4, 4, 1, 64])
-w2 = init_weights([4, 4, 64,128])
-w3 = init_weights([4, 4, 128, 256])
+w = init_weights([6, 6, 1, 64])
+w2 = init_weights([6, 6, 64,128])
+w3 = init_weights([6, 6, 128, 256])
 w4 = init_weights([256*4*4*4, 1250])
 w_o = init_weights([1250, 7])
 
@@ -67,16 +74,19 @@ sess.run(init)
 
 print 'Training model...'
 for i in range(100):
-    print str(i)
+
     sess.run(train_op, feed_dict={X:X_tr, Y:Y_tr,
                                   p_keep_conv: 0.8, p_keep_hidden: 0.5})
-    print 'Trained iteration'
-    print sess.run(predict_op, feed_dict={X: X_te,
-                                    Y: Y_te,
-                                    p_keep_conv: 1.0,
-                                    p_keep_hidden: 1.0})
-    print np.argmax(Y_te, axis=1)
-    print i, np.mean(np.argmax(Y_te, axis=1) ==
+
+    print 'Iteration: ' + str(i)
+    print 'Train correctness:'
+    print np.mean(np.argmax(Y_tr, axis=1) ==
+                     sess.run(predict_op, feed_dict={X: X_tr,
+                                                     Y: Y_te,
+                                                     p_keep_conv: 1.0,
+                                                     p_keep_hidden: 1.0}))
+    print 'Test correctness:'
+    print np.mean(np.argmax(Y_te, axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_te,
                                                      Y: Y_te,
                                                      p_keep_conv: 1.0,

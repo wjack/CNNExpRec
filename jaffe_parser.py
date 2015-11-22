@@ -62,8 +62,9 @@ class Jaffee_Parser:
 
         i  = np.argsort(label_tensor[:,0])
 
-
-        label_tensor = label_tensor[i][:,1]
+        label_tensor = label_tensor[i]
+        
+        label_tensor = label_tensor[:,1]
 
         label_tensor = label_tensor.astype(int)
 
