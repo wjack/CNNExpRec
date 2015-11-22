@@ -68,12 +68,14 @@ sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
-num_iterations = 200
+num_iterations = 5000
 
 train_correctness = []
+test_correctness = []
 fig = plt.figure()
 ax = fig.add_subplot(111)
 Ln, = ax.plot(train_correctness)
+Ln2, = ax.plot(test_correctness)
 ax.autoscale(enable = 'True', axis = 'both', tight = None)
 
 plt.ion()
@@ -95,21 +97,26 @@ for i in range(num_iterations):
                                                      p_keep_hidden: 1.0}))
     print 'Train correctness:'
     print train_correctness_iter
-    train_correctness.append(train_correctness_iter)
-    Ln.set_ydata(train_correctness)
-    Ln.set_xdata(range(len(train_correctness)))
-    ax.relim()
-    ax.autoscale_view()
 
-
-    plt.draw()
 
     test_correctness_iter = np.mean(np.argmax(Y_te, axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_te,
                                                      Y: Y_te,
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
-    print 'Test correctness:'                                                 
+    print 'Test correctness:'
     print test_correctness_iter
+
+    train_correctness.append(train_correctness_iter)
+    test_correctness.append(test_correctness_iter)
+    Ln.set_ydata(train_correctness)
+    Ln.set_xdata(range(len(train_correctness)))
+    Ln2.set_ydata(test_correctness)
+    Ln2.set_xdata(range(len(train_correctness)))
+    ax.relim()
+    ax.autoscale_view()
+
+
+    plt.draw()
 
     print ''
