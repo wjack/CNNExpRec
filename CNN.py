@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import jaffe_parser
+import matplotlib.pyplot as plt
 
 
 def init_weights(shape):
@@ -34,8 +35,6 @@ parser = jaffe_parser.Jaffee_Parser()
 
 X_data = parser.images_to_tensor()
 Y_data = parser.text_to_one_hot()
-print np.size(X_data[:,0,0])
-print np.size(Y_data)
 
 
 
@@ -47,8 +46,6 @@ X_te = X_data[split_index:]
 Y_tr = Y_data[:split_index]
 Y_te = Y_data[split_index:]
 
-print np.size(X_te[:,0,0])
-print np.size(Y_te)
 
 X = tf.placeholder("float", [None, 64, 64, 1])
 Y = tf.placeholder("float", [None, 7])
@@ -71,23 +68,48 @@ sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
+num_iterations = 200
+
+train_correctness = []
+fig = plt.figure()
+ax = fig.add_subplot(111)
+Ln, = ax.plot(train_correctness)
+ax.autoscale(enable = 'True', axis = 'both', tight = None)
+
+plt.ion()
+plt.show()
+
 
 print 'Training model...'
-for i in range(100):
+print ''
+for i in range(num_iterations):
 
     sess.run(train_op, feed_dict={X:X_tr, Y:Y_tr,
                                   p_keep_conv: 0.8, p_keep_hidden: 0.5})
 
     print 'Iteration: ' + str(i)
-    print 'Train correctness:'
-    print np.mean(np.argmax(Y_tr, axis=1) ==
+    train_correctness_iter= np.mean(np.argmax(Y_tr, axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_tr,
                                                      Y: Y_te,
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
-    print 'Test correctness:'
-    print np.mean(np.argmax(Y_te, axis=1) ==
+    print 'Train correctness:'
+    print train_correctness_iter
+    train_correctness.append(train_correctness_iter)
+    Ln.set_ydata(train_correctness)
+    Ln.set_xdata(range(len(train_correctness)))
+    ax.relim()
+    ax.autoscale_view()
+
+
+    plt.draw()
+
+    test_correctness_iter = np.mean(np.argmax(Y_te, axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_te,
                                                      Y: Y_te,
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
+    print 'Test correctness:'                                                 
+    print test_correctness_iter
+
+    print ''
