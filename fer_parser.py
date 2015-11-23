@@ -53,6 +53,7 @@ class Fer_Parser:
 
 
 '''
+#Example
 p = Fer_Parser()
 a,b,c,d = p.parse_all()
 '''
