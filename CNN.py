@@ -51,6 +51,8 @@ Y_te = Y_data[split_index:]
 '''
 parser = fer_parser.Fer_Parser()
 X_tr, Y_tr, X_te, Y_te = parser.parse_all()
+X_tr = X_tr
+Y_tr = Y_tr
 
 image_dim = 48
 
@@ -60,7 +62,7 @@ Y = tf.placeholder("float", [None, 7])
 w = init_weights([6, 6, 1, image_dim])
 w2 = init_weights([6, 6, image_dim,2*image_dim])
 w3 = init_weights([6, 6, 2*image_dim, 4*image_dim])
-w4 = init_weights([image_dim*4*4*4*4, 1250])
+w4 = init_weights([image_dim*144, 1250])
 w_o = init_weights([1250, 7])
 
 p_keep_conv = tf.placeholder("float")
@@ -94,9 +96,11 @@ print ''
 for i in range(num_iterations):
     minibatch_size = 128
     test_batch_size = 256
+    subbatch_count = 1
     for start, end in zip(range(0, len(X_tr), minibatch_size), range(128, len(X_tr),minibatch_size)):
-
-
+    
+        if subbatch_count % 100 == 0:
+            print subbatch_count
         sess.run(train_op, feed_dict={X:X_tr[start:end], Y:Y_tr[start:end],
                                       p_keep_conv: 0.8, p_keep_hidden: 0.5})
 
