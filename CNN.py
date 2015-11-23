@@ -82,7 +82,7 @@ sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
-num_iterations = 10
+num_iterations = 500
 
 train_correctness = []
 test_correctness = []
@@ -99,13 +99,12 @@ plt.show()
 fprint('Training model...')
 fprint('')
 for i in range(num_iterations):
-    minibatch_size = 128
-    test_batch_size = 256
+    minibatch_size = 64
+    test_batch_size = 128
     subbatch_count = 1
     for start, end in zip(range(0, len(X_tr), minibatch_size), range(128, len(X_tr),minibatch_size)):
 
-        if subbatch_count % 100 == 0:
-            fprint(subbatch_count)
+
         subbatch_count += 1
         sess.run(train_op, feed_dict={X:X_tr[start:end], Y:Y_tr[start:end],
                                       p_keep_conv: 0.8, p_keep_hidden: 0.5})
