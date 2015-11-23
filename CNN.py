@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 import jaffe_parser
 import matplotlib.pyplot as plt
+import fer_parser
+import pickle
 
 
 def init_weights(shape):
@@ -9,6 +11,7 @@ def init_weights(shape):
 
 
 def model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden):
+
     l1a = tf.nn.relu(tf.nn.conv2d(X, w, [1, 1, 1, 1], 'SAME'))
     l1 = tf.nn.max_pool(l1a, ksize=[1, 2, 2, 1],
                         strides=[1, 2, 2, 1], padding='SAME')
@@ -30,7 +33,7 @@ def model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden):
 
     pyx = tf.matmul(l4, w_o)
     return pyx
-
+'''
 parser = jaffe_parser.Jaffee_Parser()
 
 X_data = parser.images_to_tensor()
@@ -45,15 +48,19 @@ X_te = X_data[split_index:]
 
 Y_tr = Y_data[:split_index]
 Y_te = Y_data[split_index:]
+'''
+parser = fer_parser.Fer_Parser()
+X_tr, Y_tr, X_te, Y_te = parser.parse_all()
 
+image_dim = 48
 
-X = tf.placeholder("float", [None, 64, 64, 1])
+X = tf.placeholder("float", [None, image_dim, image_dim, 1])
 Y = tf.placeholder("float", [None, 7])
 
-w = init_weights([6, 6, 1, 64])
-w2 = init_weights([6, 6, 64,128])
-w3 = init_weights([6, 6, 128, 256])
-w4 = init_weights([256*4*4*4, 1250])
+w = init_weights([6, 6, 1, image_dim])
+w2 = init_weights([6, 6, image_dim,2*image_dim])
+w3 = init_weights([6, 6, 2*image_dim, 4*image_dim])
+w4 = init_weights([image_dim*4*4*4*4, 1250])
 w_o = init_weights([1250, 7])
 
 p_keep_conv = tf.placeholder("float")
@@ -85,9 +92,12 @@ plt.show()
 print 'Training model...'
 print ''
 for i in range(num_iterations):
+    minibatch_size = 128
+    for start, end in zip(range(0, len(trX), minibatch_size), range(128, len(trX),minibatch_size)):
 
-    sess.run(train_op, feed_dict={X:X_tr, Y:Y_tr,
-                                  p_keep_conv: 0.8, p_keep_hidden: 0.5})
+
+        sess.run(train_op, feed_dict={X:X_tr, Y:Y_tr,
+                                      p_keep_conv: 0.8, p_keep_hidden: 0.5})
 
     print 'Iteration: ' + str(i)
     train_correctness_iter= np.mean(np.argmax(Y_tr, axis=1) ==

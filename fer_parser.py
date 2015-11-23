@@ -44,8 +44,10 @@ class Fer_Parser:
 
         #convert Y to one hot
         X_tr = np.array(X_tr)
+        X_tr = X_tr.reshape(np.shape(X_tr)[0], 48, 48, 1)
         Y_tr = np.eye(7)[np.array(Y_tr, dtype = np.uint8)]
         X_te = np.array(X_te)
+        X_te = X_te.reshape(np.shape(X_te)[0], 48, 48, 1)
         Y_te = np.eye(7)[np.array(Y_te, dtype = np.uint8)]
         print 'Done parsing data.'
         return X_tr, Y_tr, X_te, Y_te
