@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import matplotlib.image as mpimg
 class Fer_Parser:
+
+
     def parse_all(self):
         print 'Parsing all data...'
         f = open('data/fer2013/fer2013.csv')
@@ -49,9 +51,8 @@ class Fer_Parser:
         return X_tr, Y_tr, X_te, Y_te
 
 
+
+'''
 p = Fer_Parser()
 a,b,c,d = p.parse_all()
-
-plt.imshow(a[13])
-plt.show()
-print c[1]
+'''
