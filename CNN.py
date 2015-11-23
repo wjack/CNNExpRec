@@ -75,7 +75,7 @@ sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
-num_iterations = 5000
+num_iterations = 10
 
 train_correctness = []
 test_correctness = []
@@ -93,25 +93,35 @@ print 'Training model...'
 print ''
 for i in range(num_iterations):
     minibatch_size = 128
-    for start, end in zip(range(0, len(trX), minibatch_size), range(128, len(trX),minibatch_size)):
+    test_batch_size = 256
+    for start, end in zip(range(0, len(X_tr), minibatch_size), range(128, len(X_tr),minibatch_size)):
 
 
-        sess.run(train_op, feed_dict={X:X_tr, Y:Y_tr,
+        sess.run(train_op, feed_dict={X:X_tr[start:end], Y:Y_tr[start:end],
                                       p_keep_conv: 0.8, p_keep_hidden: 0.5})
 
+    test_indices = np.arange(len(X_te)) # Get A Test Batch
+    np.random.shuffle(test_indices)
+    test_indices = test_indices[0:test_batch_size]
+
+
+    train_eval_indices = np.arange(len(X_tr))
+    np.random.shuffle(train_eval_indices)
+    train_eval_indices = train_eval_indices[0:test_batch_size]
+
     print 'Iteration: ' + str(i)
-    train_correctness_iter= np.mean(np.argmax(Y_tr, axis=1) ==
-                     sess.run(predict_op, feed_dict={X: X_tr,
-                                                     Y: Y_te,
+    train_correctness_iter= np.mean(np.argmax(Y_tr[train_eval_indices], axis=1) ==
+                     sess.run(predict_op, feed_dict={X: X_tr[train_eval_indices],
+                                                     Y: Y_tr[train_eval_indices],
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
     print 'Train correctness:'
     print train_correctness_iter
 
 
-    test_correctness_iter = np.mean(np.argmax(Y_te, axis=1) ==
-                     sess.run(predict_op, feed_dict={X: X_te,
-                                                     Y: Y_te,
+    test_correctness_iter = np.mean(np.argmax(Y_te[test_indices], axis=1) ==
+                     sess.run(predict_op, feed_dict={X: X_te[test_indices],
+                                                     Y: Y_te[test_indices],
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
     print 'Test correctness:'
