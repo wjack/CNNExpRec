@@ -1,0 +1,622 @@
+Iteration: 3
+Train correctness:
+0.5
+Test correctness:
+0.4609375
+
+Iteration: 4
+Train correctness:
+0.48046875
+Test correctness:
+0.515625
+
+[0.171875, 0.31640625, 0.4375, 0.4609375, 0.515625]
+[0.23046875, 0.23046875, 0.49609375, 0.5, 0.48046875]
+Training model...
+
+Training model...
+
+Training model...
+
+Iteration: 0
+Train correctness:
+0.375
+Test correctness:
+0.3515625
+
+Iteration: 1
+Train correctness:
+0.359375
+Test correctness:
+0.421875
+
+Iteration: 2
+Train correctness:
+0.328125
+Test correctness:
+0.34375
+
+Iteration: 3
+Train correctness:
+0.4375
+Test correctness:
+0.2890625
+
+Iteration: 4
+Train correctness:
+0.4375
+Test correctness:
+0.40625
+
+Iteration: 5
+Train correctness:
+0.4921875
+Test correctness:
+0.4453125
+
+Iteration: 6
+Train correctness:
+0.5234375
+Test correctness:
+0.4609375
+
+Iteration: 7
+Train correctness:
+0.46875
+Test correctness:
+0.4375
+
+Iteration: 8
+Train correctness:
+0.4609375
+Test correctness:
+0.421875
+
+Iteration: 9
+Train correctness:
+0.359375
+Test correctness:
+0.3671875
+
+Iteration: 10
+Train correctness:
+0.4609375
+Test correctness:
+0.3828125
+
+Iteration: 11
+Train correctness:
+0.4296875
+Test correctness:
+0.3828125
+
+Iteration: 12
+Train correctness:
+0.4609375
+Test correctness:
+0.4453125
+
+Iteration: 13
+Train correctness:
+0.5078125
+Test correctness:
+0.5390625
+
+Iteration: 14
+Train correctness:
+0.4140625
+Test correctness:
+0.3984375
+
+Iteration: 15
+Train correctness:
+0.34375
+Test correctness:
+0.390625
+
+Iteration: 16
+Train correctness:
+0.359375
+Test correctness:
+0.3984375
+
+Iteration: 17
+Train correctness:
+0.4375
+Test correctness:
+0.3359375
+
+Iteration: 18
+Train correctness:
+0.4921875
+Test correctness:
+0.4375
+
+Iteration: 19
+Train correctness:
+0.453125
+Test correctness:
+0.34375
+
+Iteration: 20
+Train correctness:
+0.4921875
+Test correctness:
+0.390625
+
+Iteration: 21
+Train correctness:
+0.4609375
+Test correctness:
+0.484375
+
+Iteration: 22
+Train correctness:
+0.34375
+Test correctness:
+0.3203125
+
+Iteration: 23
+Train correctness:
+0.375
+Test correctness:
+0.359375
+
+Iteration: 24
+Train correctness:
+0.4140625
+Test correctness:
+0.4140625
+
+Iteration: 25
+Train correctness:
+0.578125
+Test correctness:
+0.4140625
+
+Iteration: 26
+Train correctness:
+0.3515625
+Test correctness:
+0.3828125
+
+Iteration: 27
+Train correctness:
+0.359375
+Test correctness:
+0.4375
+
+Iteration: 28
+Train correctness:
+0.3828125
+Test correctness:
+0.3828125
+
+Iteration: 29
+Train correctness:
+0.4765625
+Test correctness:
+0.4140625
+
+Iteration: 30
+Train correctness:
+0.3046875
+Test correctness:
+0.40625
+
+Iteration: 31
+Train correctness:
+0.3984375
+Test correctness:
+0.3671875
+
+Iteration: 32
+Train correctness:
+0.3203125
+Test correctness:
+0.4140625
+
+Iteration: 33
+Train correctness:
+0.328125
+Test correctness:
+0.3671875
+
+Iteration: 34
+Train correctness:
+0.4296875
+Test correctness:
+0.375
+
+Iteration: 35
+Train correctness:
+0.3984375
+Test correctness:
+0.328125
+
+Iteration: 36
+Train correctness:
+0.421875
+Test correctness:
+0.390625
+
+Iteration: 37
+Train correctness:
+0.4453125
+Test correctness:
+0.390625
+
+Iteration: 38
+Train correctness:
+0.34375
+Test correctness:
+0.40625
+
+Iteration: 39
+Train correctness:
+0.3828125
+Test correctness:
+0.4453125
+
+Iteration: 40
+Train correctness:
+0.1953125
+Test correctness:
+0.15625
+
+Iteration: 41
+Train correctness:
+0.3828125
+Test correctness:
+0.390625
+
+Iteration: 42
+Train correctness:
+0.3828125
+Test correctness:
+0.34375
+
+Iteration: 43
+Train correctness:
+0.5
+Test correctness:
+0.4140625
+
+Iteration: 44
+Train correctness:
+0.4296875
+Test correctness:
+0.4296875
+
+Iteration: 45
+Train correctness:
+0.390625
+Test correctness:
+0.375
+
+Iteration: 46
+Train correctness:
+0.4296875
+Test correctness:
+0.375
+
+Iteration: 47
+Train correctness:
+0.3125
+Test correctness:
+0.328125
+
+Iteration: 48
+Train correctness:
+0.359375
+Test correctness:
+0.3515625
+
+Iteration: 49
+Train correctness:
+0.390625
+Test correctness:
+0.34375
+
+Iteration: 50
+Train correctness:
+0.46875
+Test correctness:
+0.3828125
+
+Iteration: 51
+Train correctness:
+0.3984375
+Test correctness:
+0.453125
+
+Iteration: 52
+Train correctness:
+0.3671875
+Test correctness:
+0.34375
+
+Iteration: 53
+Train correctness:
+0.390625
+Test correctness:
+0.3515625
+
+Iteration: 54
+Train correctness:
+0.3984375
+Test correctness:
+0.5078125
+
+Iteration: 55
+Train correctness:
+0.4375
+Test correctness:
+0.3515625
+
+Iteration: 56
+Train correctness:
+0.203125
+Test correctness:
+0.2578125
+
+Iteration: 57
+Train correctness:
+0.2734375
+Test correctness:
+0.328125
+
+Iteration: 58
+Train correctness:
+0.3359375
+Test correctness:
+0.34375
+
+Iteration: 59
+Train correctness:
+0.359375
+Test correctness:
+0.3359375
+
+Iteration: 60
+Train correctness:
+0.3359375
+Test correctness:
+0.3828125
+
+Iteration: 61
+Train correctness:
+0.296875
+Test correctness:
+0.359375
+
+Iteration: 62
+Train correctness:
+0.34375
+Test correctness:
+0.34375
+
+Iteration: 63
+Train correctness:
+0.3203125
+Test correctness:
+0.3046875
+
+Iteration: 64
+Train correctness:
+0.359375
+Test correctness:
+0.34375
+
+Iteration: 65
+Train correctness:
+0.3203125
+Test correctness:
+0.2890625
+
+Iteration: 66
+Train correctness:
+0.28125
+Test correctness:
+0.2265625
+
+Iteration: 67
+Train correctness:
+0.3046875
+Test correctness:
+0.3125
+
+Iteration: 68
+Train correctness:
+0.34375
+Test correctness:
+0.328125
+
+Iteration: 69
+Train correctness:
+0.328125
+Test correctness:
+0.40625
+
+Iteration: 70
+Train correctness:
+0.203125
+Test correctness:
+0.2890625
+
+Iteration: 71
+Train correctness:
+0.375
+Test correctness:
+0.25
+
+Iteration: 72
+Train correctness:
+0.359375
+Test correctness:
+0.375
+
+Iteration: 73
+Train correctness:
+0.3125
+Test correctness:
+0.3125
+
+Iteration: 74
+Train correctness:
+0.296875
+Test correctness:
+0.2734375
+
+Iteration: 75
+Train correctness:
+0.2890625
+Test correctness:
+0.3125
+
+Iteration: 76
+Train correctness:
+0.3125
+Test correctness:
+0.3515625
+
+Iteration: 77
+Train correctness:
+0.21875
+Test correctness:
+0.2265625
+
+Iteration: 78
+Train correctness:
+0.296875
+Test correctness:
+0.328125
+
+Iteration: 79
+Train correctness:
+0.3359375
+Test correctness:
+0.25
+
+Iteration: 80
+Train correctness:
+0.2734375
+Test correctness:
+0.3203125
+
+Iteration: 81
+Train correctness:
+0.375
+Test correctness:
+0.3359375
+
+Iteration: 82
+Train correctness:
+0.3359375
+Test correctness:
+0.265625
+
+Iteration: 83
+Train correctness:
+0.265625
+Test correctness:
+0.2421875
+
+Iteration: 84
+Train correctness:
+0.2734375
+Test correctness:
+0.2265625
+
+Iteration: 85
+Train correctness:
+0.359375
+Test correctness:
+0.3046875
+
+Iteration: 86
+Train correctness:
+0.3203125
+Test correctness:
+0.2734375
+
+Iteration: 87
+Train correctness:
+0.203125
+Test correctness:
+0.2265625
+
+Iteration: 88
+Train correctness:
+0.375
+Test correctness:
+0.2421875
+
+Iteration: 89
+Train correctness:
+0.3203125
+Test correctness:
+0.28125
+
+Iteration: 90
+Train correctness:
+0.2890625
+Test correctness:
+0.3203125
+
+Iteration: 91
+Train correctness:
+0.3359375
+Test correctness:
+0.296875
+
+Iteration: 92
+Train correctness:
+0.3203125
+Test correctness:
+0.2734375
+
+Iteration: 93
+Train correctness:
+0.2890625
+Test correctness:
+0.296875
+
+Iteration: 94
+Train correctness:
+0.28125
+Test correctness:
+0.2734375
+
+Iteration: 95
+Train correctness:
+0.3828125
+Test correctness:
+0.3203125
+
+Iteration: 96
+Train correctness:
+0.3359375
+Test correctness:
+0.328125
+
+Iteration: 97
+Train correctness:
+0.234375
+Test correctness:
+0.25
+
+Iteration: 98
+Train correctness:
+0.3203125
+Test correctness:
+0.28125
+
+Iteration: 99
+Train correctness:
+0.34375
+Test correctness:
+0.3125
+
+[0.3515625, 0.421875, 0.34375, 0.2890625, 0.40625, 0.4453125, 0.4609375, 0.4375, 0.421875, 0.3671875, 0.3828125, 0.3828125, 0.4453125, 0.5390625, 0.3984375, 0.390625, 0.3984375, 0.3359375, 0.4375, 0.34375, 0.390625, 0.484375, 0.3203125, 0.359375, 0.4140625, 0.4140625, 0.3828125, 0.4375, 0.3828125, 0.4140625, 0.40625, 0.3671875, 0.4140625, 0.3671875, 0.375, 0.328125, 0.390625, 0.390625, 0.40625, 0.4453125, 0.15625, 0.390625, 0.34375, 0.4140625, 0.4296875, 0.375, 0.375, 0.328125, 0.3515625, 0.34375, 0.3828125, 0.453125, 0.34375, 0.3515625, 0.5078125, 0.3515625, 0.2578125, 0.328125, 0.34375, 0.3359375, 0.3828125, 0.359375, 0.34375, 0.3046875, 0.34375, 0.2890625, 0.2265625, 0.3125, 0.328125, 0.40625, 0.2890625, 0.25, 0.375, 0.3125, 0.2734375, 0.3125, 0.3515625, 0.2265625, 0.328125, 0.25, 0.3203125, 0.3359375, 0.265625, 0.2421875, 0.2265625, 0.3046875, 0.2734375, 0.2265625, 0.2421875, 0.28125, 0.3203125, 0.296875, 0.2734375, 0.296875, 0.2734375, 0.3203125, 0.328125, 0.25, 0.28125, 0.3125]
+[0.375, 0.359375, 0.328125, 0.4375, 0.4375, 0.4921875, 0.5234375, 0.46875, 0.4609375, 0.359375, 0.4609375, 0.4296875, 0.4609375, 0.5078125, 0.4140625, 0.34375, 0.359375, 0.4375, 0.4921875, 0.453125, 0.4921875, 0.4609375, 0.34375, 0.375, 0.4140625, 0.578125, 0.3515625, 0.359375, 0.3828125, 0.4765625, 0.3046875, 0.3984375, 0.3203125, 0.328125, 0.4296875, 0.3984375, 0.421875, 0.4453125, 0.34375, 0.3828125, 0.1953125, 0.3828125, 0.3828125, 0.5, 0.4296875, 0.390625, 0.4296875, 0.3125, 0.359375, 0.390625, 0.46875, 0.3984375, 0.3671875, 0.390625, 0.3984375, 0.4375, 0.203125, 0.2734375, 0.3359375, 0.359375, 0.3359375, 0.296875, 0.34375, 0.3203125, 0.359375, 0.3203125, 0.28125, 0.3046875, 0.34375, 0.328125, 0.203125, 0.375, 0.359375, 0.3125, 0.296875, 0.2890625, 0.3125, 0.21875, 0.296875, 0.3359375, 0.2734375, 0.375, 0.3359375, 0.265625, 0.2734375, 0.359375, 0.3203125, 0.203125, 0.375, 0.3203125, 0.2890625, 0.3359375, 0.3203125, 0.2890625, 0.28125, 0.3828125, 0.3359375, 0.234375, 0.3203125, 0.34375]

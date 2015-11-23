@@ -74,14 +74,14 @@ p_keep_hidden = tf.placeholder("float")
 py_x = model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden)
 
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))
-train_op = tf.train.RMSPropOptimizer(0.001, 0.9).minimize(cost)
+train_op = tf.train.AdagradOptimizer(0.01).minimize(cost)
 predict_op = tf.argmax(py_x,1)
 
 sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
-num_iterations = 100
+num_iterations = 300
 
 train_correctness = []
 test_correctness = []
