@@ -122,7 +122,6 @@ for i in range(num_iterations):
     print 'Train correctness:'
     print train_correctness_iter
 
-
     test_correctness_iter = np.mean(np.argmax(Y_te[test_indices], axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_te[test_indices],
                                                      Y: Y_te[test_indices],

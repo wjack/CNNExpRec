@@ -16,7 +16,7 @@ class Fer_Parser:
         Y_te = []
 
         count = 0
-        lines = f.readlines()[1:2000]
+        lines = f.readlines()[1:]
         length = str(len(lines))
         for line in lines:
             count += 1
