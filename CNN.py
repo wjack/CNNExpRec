@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 import jaffe_parser
-import matplotlib.pyplot as plt
 import fer_parser
 import pickle
 
@@ -86,14 +85,14 @@ num_iterations = 10
 
 train_correctness = []
 test_correctness = []
-fig = plt.figure()
-ax = fig.add_subplot(111)
-Ln, = ax.plot(train_correctness)
-Ln2, = ax.plot(test_correctness)
-ax.autoscale(enable = 'True', axis = 'both', tight = None)
+#fig = plt.figure()
+#ax = fig.add_subplot(111)
+#Ln, = ax.plot(train_correctness)
+#Ln2, = ax.plot(test_correctness)
+#ax.autoscale(enable = 'True', axis = 'both', tight = None)
 
-plt.ion()
-plt.show()
+#plt.ion()
+#plt.show()
 
 
 fprint('Training model...')
@@ -138,14 +137,16 @@ for i in range(num_iterations):
 
     train_correctness.append(train_correctness_iter)
     test_correctness.append(test_correctness_iter)
-    Ln.set_ydata(train_correctness)
-    Ln.set_xdata(range(len(train_correctness)))
-    Ln2.set_ydata(test_correctness)
-    Ln2.set_xdata(range(len(train_correctness)))
-    ax.relim()
-    ax.autoscale_view()
+ #   Ln.set_ydata(train_correctness)
+  #  Ln.set_xdata(range(len(train_correctness)))
+   # Ln2.set_ydata(test_correctness)
+    #Ln2.set_xdata(range(len(train_correctness)))
+   # ax.relim()
+    #ax.autoscale_view()
 
 
-    plt.draw()
+   # plt.draw()
 
     fprint('')
+fprint(test_correctness)
+fprint(train_correctness)

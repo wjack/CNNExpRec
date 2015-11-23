@@ -1,9 +1,8 @@
 import numpy as np
-from scipy.misc import imread
 import os
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import tensorflow as tf
-import matplotlib.image as mpimg
+#import matplotlib.image as mpimg
 class Jaffee_Parser:
     def images_to_tensor(self):
         images = []

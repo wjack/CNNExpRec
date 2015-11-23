@@ -1,8 +1,8 @@
 import numpy as np
 import os
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import tensorflow as tf
-import matplotlib.image as mpimg
+#import matplotlib.image as mpimg
 class Fer_Parser:
 
 
