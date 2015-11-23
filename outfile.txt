@@ -1,0 +1,32 @@
+Iteration: 3
+Train correctness:
+0.5
+Test correctness:
+0.4609375
+
+Iteration: 4
+Train correctness:
+0.48046875
+Test correctness:
+0.515625
+
+[0.171875, 0.31640625, 0.4375, 0.4609375, 0.515625]
+[0.23046875, 0.23046875, 0.49609375, 0.5, 0.48046875]
+Training model...
+
+Training model...
+
+Training model...
+
+Iteration: 0
+Train correctness:
+0.375
+Test correctness:
+0.3515625
+
+Iteration: 1
+Train correctness:
+0.359375
+Test correctness:
+0.421875
+
