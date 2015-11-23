@@ -33,6 +33,11 @@ def model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden):
 
     pyx = tf.matmul(l4, w_o)
     return pyx
+
+def fprint(output):
+   print output
+   with open("outfile.txt", "a") as f:
+       f.write("{}\n".format(output))
 '''
 parser = jaffe_parser.Jaffee_Parser()
 
@@ -91,16 +96,17 @@ plt.ion()
 plt.show()
 
 
-print 'Training model...'
-print ''
+fprint('Training model...')
+fprint('')
 for i in range(num_iterations):
     minibatch_size = 128
     test_batch_size = 256
     subbatch_count = 1
     for start, end in zip(range(0, len(X_tr), minibatch_size), range(128, len(X_tr),minibatch_size)):
-    
+
         if subbatch_count % 100 == 0:
-            print subbatch_count
+            fprint(subbatch_count)
+        subbatch_count += 1
         sess.run(train_op, feed_dict={X:X_tr[start:end], Y:Y_tr[start:end],
                                       p_keep_conv: 0.8, p_keep_hidden: 0.5})
 
@@ -113,22 +119,22 @@ for i in range(num_iterations):
     np.random.shuffle(train_eval_indices)
     train_eval_indices = train_eval_indices[0:test_batch_size]
 
-    print 'Iteration: ' + str(i)
+    fprint('Iteration: ' + str(i))
     train_correctness_iter= np.mean(np.argmax(Y_tr[train_eval_indices], axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_tr[train_eval_indices],
                                                      Y: Y_tr[train_eval_indices],
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
-    print 'Train correctness:'
-    print train_correctness_iter
+    fprint('Train correctness:')
+    fprint(train_correctness_iter)
 
     test_correctness_iter = np.mean(np.argmax(Y_te[test_indices], axis=1) ==
                      sess.run(predict_op, feed_dict={X: X_te[test_indices],
                                                      Y: Y_te[test_indices],
                                                      p_keep_conv: 1.0,
                                                      p_keep_hidden: 1.0}))
-    print 'Test correctness:'
-    print test_correctness_iter
+    fprint('Test correctness:')
+    fprint(test_correctness_iter)
 
     train_correctness.append(train_correctness_iter)
     test_correctness.append(test_correctness_iter)
@@ -142,4 +148,4 @@ for i in range(num_iterations):
 
     plt.draw()
 
-    print ''
+    fprint('')

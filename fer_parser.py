@@ -1,5 +1,4 @@
 import numpy as np
-from scipy.misc import imread
 import os
 import matplotlib.pyplot as plt
 import tensorflow as tf
