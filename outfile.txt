@@ -1,0 +1,62 @@
+Training model...
+
+Iteration: 0
+Train correctness:
+0.4140625
+Test correctness:
+0.4140625
+
+Iteration: 1
+Train correctness:
+0.4765625
+Test correctness:
+0.515625
+
+Iteration: 2
+Train correctness:
+0.5546875
+Test correctness:
+0.5859375
+
+Iteration: 3
+Train correctness:
+0.5625
+Test correctness:
+0.578125
+
+Iteration: 4
+Train correctness:
+0.640625
+Test correctness:
+0.5078125
+
+Iteration: 5
+Train correctness:
+0.671875
+Test correctness:
+0.6484375
+
+Iteration: 6
+Train correctness:
+0.7421875
+Test correctness:
+0.5703125
+
+Iteration: 7
+Train correctness:
+0.7109375
+Test correctness:
+0.53125
+
+Iteration: 8
+Train correctness:
+0.7265625
+Test correctness:
+0.59375
+
+Iteration: 9
+Train correctness:
+0.765625
+Test correctness:
+0.546875
+

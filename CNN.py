@@ -98,6 +98,9 @@ test_correctness = []
 fprint('Training model...')
 fprint('')
 for i in range(num_iterations):
+    shuffle = np.random.permutation(len(X_tr))
+    X_tr = X_tr[shuffle]
+    Y_tr = Y_tr[shuffle]
     minibatch_size = 64
     test_batch_size = 128
     subbatch_count = 1
