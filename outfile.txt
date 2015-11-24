@@ -2,61 +2,129 @@ Training model...
 
 Iteration: 0
 Train correctness:
-0.4140625
+0.3828125
 Test correctness:
-0.4140625
+0.359375
 
 Iteration: 1
 Train correctness:
+0.4375
+Test correctness:
+0.484375
+
+Iteration: 2
+Train correctness:
+0.5859375
+Test correctness:
+0.5390625
+
+Iteration: 3
+Train correctness:
+0.6015625
+Test correctness:
+0.546875
+
+Iteration: 4
+Train correctness:
+0.6875
+Test correctness:
+0.53125
+
+Iteration: 5
+Train correctness:
+0.65625
+Test correctness:
+0.609375
+
+Iteration: 6
+Train correctness:
+0.7734375
+Test correctness:
+0.609375
+
+Iteration: 7
+Train correctness:
+0.6953125
+Test correctness:
+0.546875
+
+Iteration: 8
+Train correctness:
+0.7890625
+Test correctness:
+0.578125
+
+Training model...
+
+Iteration: 0
+Train correctness:
 0.4765625
+Test correctness:
+0.453125
+
+Iteration: 1
+Train correctness:
+0.546875
 Test correctness:
 0.515625
 
 Iteration: 2
 Train correctness:
-0.5546875
+0.640625
 Test correctness:
-0.5859375
+0.5
 
 Iteration: 3
 Train correctness:
-0.5625
+0.671875
 Test correctness:
-0.578125
+0.5625
 
 Iteration: 4
 Train correctness:
-0.640625
+0.6171875
 Test correctness:
-0.5078125
+0.5546875
 
 Iteration: 5
 Train correctness:
 0.671875
 Test correctness:
-0.6484375
+0.5625
 
 Iteration: 6
 Train correctness:
-0.7421875
+0.6875
 Test correctness:
-0.5703125
+0.6328125
 
 Iteration: 7
 Train correctness:
-0.7109375
+0.75
 Test correctness:
-0.53125
+0.5625
 
 Iteration: 8
 Train correctness:
-0.7265625
+0.734375
 Test correctness:
-0.59375
+0.578125
 
 Iteration: 9
 Train correctness:
-0.765625
+0.875
 Test correctness:
-0.546875
+0.5859375
+
+Iteration: 10
+Train correctness:
+0.796875
+Test correctness:
+0.6640625
+
+Iteration: 11
+Train correctness:
+0.875
+Test correctness:
+0.703125
 

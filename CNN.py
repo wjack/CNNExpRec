@@ -9,25 +9,25 @@ def init_weights(shape):
     return tf.Variable(tf.random_normal(shape, stddev=0.01))
 
 
-def model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden):
+def model(X, w, w2, w3, w4, w_o,b1, b2, b3, b4, p_keep_conv, p_keep_hidden):
 
-    l1a = tf.nn.relu(tf.nn.conv2d(X, w, [1, 1, 1, 1], 'SAME'))
+    l1a = tf.nn.relu(tf.nn.conv2d(X, w, [1, 1, 1, 1], 'SAME') + b1)
     l1 = tf.nn.max_pool(l1a, ksize=[1, 2, 2, 1],
                         strides=[1, 2, 2, 1], padding='SAME')
     l1 = tf.nn.dropout(l1, p_keep_conv)
 
-    l2a = tf.nn.relu(tf.nn.conv2d(l1, w2, [1, 1, 1, 1], 'SAME'))
+    l2a = tf.nn.relu(tf.nn.conv2d(l1, w2, [1, 1, 1, 1], 'SAME')+b2)
     l2 = tf.nn.max_pool(l2a, ksize=[1, 2, 2, 1],
                         strides=[1, 2, 2, 1], padding='SAME')
     l2 = tf.nn.dropout(l2, p_keep_conv)
 
-    l3a = tf.nn.relu(tf.nn.conv2d(l2, w3, [1, 1, 1, 1], 'SAME'))
+    l3a = tf.nn.relu(tf.nn.conv2d(l2, w3, [1, 1, 1, 1], 'SAME') + b3)
     l3 = tf.nn.max_pool(l3a, ksize=[1, 2, 2, 1],
                         strides=[1, 2, 2, 1], padding='SAME')
     l3 = tf.reshape(l3, [-1, w4.get_shape().as_list()[0]])
     l3 = tf.nn.dropout(l3, p_keep_conv)
 
-    l4 = tf.nn.relu(tf.matmul(l3, w4))
+    l4 = tf.nn.relu(tf.matmul(l3, w4)+ b4)
     l4 = tf.nn.dropout(l4, p_keep_hidden)
 
     pyx = tf.matmul(l4, w_o)
@@ -55,8 +55,9 @@ Y_te = Y_data[split_index:]
 '''
 parser = fer_parser.Fer_Parser()
 X_tr, Y_tr, X_te, Y_te = parser.parse_all()
-X_tr = X_tr
-Y_tr = Y_tr
+flipped_X_tr = X_tr[:,:,::-1]
+X_tr = np.vstack([X_tr, flipped_X_tr])
+Y_tr = np.vstack([Y_tr,Y_tr])
 
 image_dim = 48
 
@@ -69,9 +70,14 @@ w3 = init_weights([6, 6, 2*image_dim, 4*image_dim])
 w4 = init_weights([image_dim*144, 1250])
 w_o = init_weights([1250, 7])
 
+b1 = init_weights([image_dim])
+b2 = init_weights([2*image_dim])
+b3 = init_weights([4*image_dim])
+b4 = init_weights([1250])
+
 p_keep_conv = tf.placeholder("float")
 p_keep_hidden = tf.placeholder("float")
-py_x = model(X, w, w2, w3, w4, w_o, p_keep_conv, p_keep_hidden)
+py_x = model(X, w, w2, w3, w4, w_o, b1, b2, b3, b4, p_keep_conv, p_keep_hidden)
 
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))
 train_op = tf.train.AdagradOptimizer(0.01).minimize(cost)
@@ -81,7 +87,7 @@ sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
 
-num_iterations = 300
+num_iterations = 50
 
 train_correctness = []
 test_correctness = []
