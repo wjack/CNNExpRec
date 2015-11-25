@@ -81,7 +81,7 @@ p_keep_conv = tf.placeholder("float")
 p_keep_hidden = tf.placeholder("float")
 py_x = model(X, w, w2, w3, w4, w_o, b1, b2, b3, b4, p_keep_conv, p_keep_hidden)
 
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))+ reg_weight*tf.l2_loss(w4) + reg_weight*tf.l2_loss(w_o)
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(py_x, Y))+ reg_weight*tf.nn.l2_loss(w4) + reg_weight*tf.nn.l2_loss(w_o)
 train_op = tf.train.AdagradOptimizer(0.01).minimize(cost)
 predict_op = tf.argmax(py_x,1)
 
