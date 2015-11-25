@@ -64,7 +64,7 @@ Y_tr = np.vstack([Y_tr,Y_tr])
 
 image_dim = 48
 
-reg_weight = .2
+reg_weight = .1
 
 X = tf.placeholder("float", [None, image_dim, image_dim, 1])
 Y = tf.placeholder("float", [None, 7])
@@ -122,7 +122,7 @@ for i in range(num_iterations):
        
         subbatch_count += 1
         sess.run(train_op, feed_dict={X:X_tr[start:end], Y:Y_tr[start:end],
-                                      p_keep_conv: 0.8, p_keep_hidden: 0.5})
+                                      p_keep_conv: 0.6, p_keep_hidden: 0.6})
 
     test_indices = np.arange(len(X_te)) # Get A Test Batch
     np.random.shuffle(test_indices)
@@ -152,7 +152,7 @@ for i in range(num_iterations):
 
     train_correctness.append(train_correctness_iter)
     test_correctness.append(test_correctness_iter)
-    saver.save(sess, 'convnet-5', global_step = i)
+    saver.save(sess, 'convnet-6', global_step = i)
  #   Ln.set_ydata(train_correctness)
   #  Ln.set_xdata(range(len(train_correctness)))
    # Ln2.set_ydata(test_correctness)
