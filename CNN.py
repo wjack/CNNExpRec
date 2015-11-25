@@ -53,6 +53,9 @@ X_te = X_data[split_index:]
 Y_tr = Y_data[:split_index]
 Y_te = Y_data[split_index:]
 '''
+
+
+
 parser = fer_parser.Fer_Parser()
 X_tr, Y_tr, X_te, Y_te = parser.parse_all()
 flipped_X_tr = X_tr[:,:,::-1]
@@ -76,6 +79,8 @@ b1 = init_weights([image_dim])
 b2 = init_weights([2*image_dim])
 b3 = init_weights([4*image_dim])
 b4 = init_weights([1250])
+
+saver = tf.train.Saver({'w':w, 'w2':w2, 'w3':w3,'w4':w4,'w_o':w_o},max_to_keep = 5)
 
 p_keep_conv = tf.placeholder("float")
 p_keep_hidden = tf.placeholder("float")
@@ -147,6 +152,7 @@ for i in range(num_iterations):
 
     train_correctness.append(train_correctness_iter)
     test_correctness.append(test_correctness_iter)
+    saver.save(sess, 'convnet-5', global_step = i)
  #   Ln.set_ydata(train_correctness)
   #  Ln.set_xdata(range(len(train_correctness)))
    # Ln2.set_ydata(test_correctness)
